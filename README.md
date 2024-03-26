@@ -68,9 +68,17 @@ You've successfully run and modified your React Native App. :partying_face:
 
 If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+# Sample Images
 
-To learn more about React Native, take a look at the following resources:
+
+![login](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/9cf25371-0580-490c-ae62-a3d492473849)
+![signup](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/9c81407f-9a36-49f2-ab5c-b1b0ea341277)
+![Homepage](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/fc5f99bc-db71-4784-8ae2-48d9c2f44d8c)
+![Form](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/287b6fa1-2eba-43e6-8d53-176a1990fbd5)
+![Hospitals and Doctors Nearby](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/3704fc1d-a9de-445f-9982-f38fc5545f7b)
+
+
+
 
 - [React Native Website](https://reactnative.dev) - learn more about React Native.
 - [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
