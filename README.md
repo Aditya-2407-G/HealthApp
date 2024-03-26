@@ -75,7 +75,8 @@ If you can't get this to work, see the [Troubleshooting](https://reactnative.dev
 ![signup](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/9c81407f-9a36-49f2-ab5c-b1b0ea341277)
 ![Homepage](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/fc5f99bc-db71-4784-8ae2-48d9c2f44d8c)
 ![Form](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/287b6fa1-2eba-43e6-8d53-176a1990fbd5)
-![Hospitals and Doctors Nearby](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/3704fc1d-a9de-445f-9982-f38fc5545f7b)
+![Hospitals and Doctors Nearby](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/2f951f70-3277-457d-a660-ded572148ff5)
+
 
 
 
