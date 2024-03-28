@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551748982102",
+    "project_id": "healthapp-71d4e",
+    "storage_bucket": "healthapp-71d4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551748982102:android:56a503e4da8552a65e72f7",
+        "android_client_info": {
+          "package_name": "com.medibit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA82Hj_uDqtGqIfKC6JxjlJJX1CUfhf-3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
