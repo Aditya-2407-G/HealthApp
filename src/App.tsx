@@ -1,19 +1,19 @@
-
-import React from 'react';
-import { AppwriteProvider } from './appwrite/AppwriteContext';
-import { Router } from './routes/Router';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
 import 'react-native-gesture-handler';
+import { FirebaseProvider } from './firebase/FirebaseContext';
+import Router from './routes/Router';
 
-function App(): React.JSX.Element {
+
+const App = () => {
 
   return (
-
-    <AppwriteProvider>
+    <FirebaseProvider>
       <Router/>
-    </AppwriteProvider>
-
+    </FirebaseProvider>
   );
 }
 
+export default App
 
-export default App;
+const styles = StyleSheet.create({})

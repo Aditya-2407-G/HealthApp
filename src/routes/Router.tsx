@@ -1,47 +1,31 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-
-import AppwriteContext from '../appwrite/AppwriteContext'
-import Loading from '../components/Loading'
-
-//routes
-import { AppStack } from './AppStack'
-import { AuthStack } from './AuthStack'
-
+import React, { useContext, useEffect, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Loading from '../components/Loading';
+import { AppStack } from './AppStack';
+import { AuthStack } from './AuthStack';
+import { FirebaseContext } from '../firebase/FirebaseContext'; // Import FirebaseContext from your Firebase context file
 
 export const Router = () => {
-
-    const [isLoading, setIsLoading] = useState<boolean>(true)
-
-    const {appwrite, isLoggedIn, setIsLoggedIn} = useContext(AppwriteContext)
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const { isLoggedIn } = useContext(FirebaseContext); // Destructure isLoggedIn from FirebaseContext
 
     useEffect(() => {
+        setIsLoading(false); // Set isLoading to false once the component mounts
+    }, []);
 
-        appwrite.getCurrentUser().then(response => {
-            setIsLoading(false)
-            if(response) {
-                setIsLoggedIn(true)
-            }
-        })
-        .catch(_ => {
-            setIsLoading(false)
-            setIsLoggedIn(false)
-        })
-
-    }, [appwrite, setIsLoggedIn])
-    
-
-    if(isLoading) {
-        return <Loading/>
+    // If still loading, display Loading component
+    if (isLoading) {
+        return <Loading />;
     }
 
+    return (
+        <NavigationContainer>
+            {isLoggedIn ? <AppStack /> : <AuthStack />}
+        </NavigationContainer>
+    );
+};
 
-  return (
+const styles = StyleSheet.create({});
 
-    <NavigationContainer >
-        {isLoggedIn ? <AppStack/> : <AuthStack/> }
-    </NavigationContainer>
-  )
-}
-
+export default Router;

@@ -1,63 +1,76 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Pressable, Modal } from 'react-native';
-import AppwriteContext from '../appwrite/AppwriteContext';
+import React, { useContext, useState, useRef, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import FirebaseContext from '../firebase/FirebaseContext';
 import Snackbar from 'react-native-snackbar';
 import Icons from './Icons';
-import Home from '../screens/Home';
+import Popover from 'react-native-popover-view';
+import auth from '@react-native-firebase/auth'
 
 type CustomStatusBarProps = {
   userName: string;
 };
 
-const CustomStatusBar = ({ userName }: CustomStatusBarProps) => {
+const user = auth().currentUser?.displayName;
 
-  const { appwrite, setIsLoggedIn } = useContext(AppwriteContext)
-  const [menuVisible, setMenuVisible] = useState(false);
+const CustomStatusBar = ({ userName }: CustomStatusBarProps) => {
+  const { isLoggedIn, setIsLoggedIn } = useContext(FirebaseContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const [userDisplayName, setUserDisplayName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const currentUser = auth().currentUser;
+    if (currentUser) {
+      setUserDisplayName(currentUser.displayName);
+    }
+  }, []);
+  
 
   const handleLogout = () => {
-    appwrite.logOut()
-      .then(() => {
+    auth().signOut().then(() => {
+        
         setIsLoggedIn(false);
         Snackbar.show({
           text: 'Logout Successful',
-          duration: Snackbar.LENGTH_SHORT
-        })
+          duration: Snackbar.LENGTH_SHORT,
+        });
       })
-  }
+      .catch((error) => {
+        console.error('Logout error:', error);
+        Snackbar.show({
+          text: 'Failed to logout',
+          duration: Snackbar.LENGTH_SHORT,
+        });
+      })
+      .finally(() => {
+        setIsVisible(false);
+      });
+  };
 
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
+  const togglePopover = () => {
+    setIsVisible(!isVisible);
   };
 
   return (
     <View style={styles.container}>
-
       <View style={styles.leftContainer}>
-        <Text style={styles.userNameText}>Hello, {userName}!</Text>
+        <Text style={styles.userNameText}>Hello, {userDisplayName || 'User'}!</Text>
       </View>
 
       <View style={styles.rightContainer}>
-
-        <TouchableOpacity onPress={toggleMenu}>
+        <TouchableOpacity onPress={togglePopover}>
           <Icons name="dots-vertical" />
         </TouchableOpacity>
+        <Popover
+          isVisible={isVisible}
+          onRequestClose={togglePopover}
+          popoverStyle={styles.popover}
+        >
+          <TouchableOpacity onPress={handleLogout}>
+            <Text style={styles.menuItem}>Logout</Text>
+          </TouchableOpacity>
+        </Popover>
       </View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={menuVisible}
-        onRequestClose={() => setMenuVisible(false)}
-      >
-        <Pressable style={styles.modalBackground} onPress={() => setMenuVisible(false)}>
-          <View style={styles.dropdownMenu}>
-            <TouchableOpacity onPress={handleLogout}>
-              <Text style={styles.menuText}>LOGOUT</Text>
-            </TouchableOpacity>
-          </View>
-        </Pressable>
-      </Modal>
     </View>
-
   );
 };
 
@@ -67,13 +80,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 60,
-    paddingHorizontal: 16,
     backgroundColor: '#0B0D32',
   },
   leftContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    marginLeft: 10
   },
   userNameText: {
     color: '#FFFFFF',
@@ -81,24 +94,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   rightContainer: {
-    width: 40,
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight:5
   },
-  modalBackground: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+  popover: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 4,
+    elevation: 4,
+
   },
-  dropdownMenu: {
-    backgroundColor: '#ffffff',
-    padding: 10,
-    borderRadius: 5,
-    margin: 20,
-  },
-  menuText: {
+  menuItem: {
+    paddingHorizontal: 10,
+    paddingVertical: 8,
     fontSize: 16,
     color: '#000000',
   },
 });
+
 export default CustomStatusBar;
