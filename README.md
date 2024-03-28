@@ -1,10 +1,3 @@
-# APK Link:
-
-(https://drive.google.com/file/d/1wK-khrHzIBKfP0uN_A7oB_7csum4X12W/view?usp=sharing)
-
-## Test Email- test@gmail.com
-## Test Password- testpassword
-
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
@@ -75,18 +68,9 @@ You've successfully run and modified your React Native App. :partying_face:
 
 If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Sample Images
+# Learn More
 
-
-![login](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/9cf25371-0580-490c-ae62-a3d492473849)
-![signup](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/9c81407f-9a36-49f2-ab5c-b1b0ea341277)
-![Homepage](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/fc5f99bc-db71-4784-8ae2-48d9c2f44d8c)
-![Form](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/287b6fa1-2eba-43e6-8d53-176a1990fbd5)
-![Hospitals and Doctors Nearby](https://github.com/Aditya-2407-G/HealthApp/assets/92910224/2f951f70-3277-457d-a660-ded572148ff5)
-
-
-
-
+To learn more about React Native, take a look at the following resources:
 
 - [React Native Website](https://reactnative.dev) - learn more about React Native.
 - [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
