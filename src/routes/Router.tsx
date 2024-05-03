@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Loading from '../components/Loading';
 import { AppStack } from './AppStack';
 import { AuthStack } from './AuthStack';
-import { FirebaseContext } from '../firebase/FirebaseContext'; // Import FirebaseContext from your Firebase context file
+import { FirebaseContext } from '../firebase/FirebaseContext'; 
 
 export const Router = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
